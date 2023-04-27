@@ -8,7 +8,7 @@ import java.net.CacheRequest;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.Listeners;
-@Listeners({ExtentTestNGITestListener.class})
+
 
 public class TC1_Getuserdetails {
 
