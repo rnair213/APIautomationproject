@@ -1,30 +1,30 @@
 package Testcases;
 
 
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC3_updateUser {
+import static io.restassured.RestAssured.*;
+
+public class TC3_updateUser extends datafortests {
 
 
-    @Test(priority = 1)
-    public void testCreateUser() {
+    @Test(priority = 1, dataProvider = "DataForPost")
+    public void testCreateUser(String name, String lastname) {
         try {
             // Set the base URI for the API
-            RestAssured.baseURI = "https://reqres.in/api";
+            baseURI = "https://reqres.in/api";
 
             // Set the request body parameters
-            String name = "George";
-            String lastname = "hayden";
-            String requestBody = "{ \"name\": \"" + name + "\", \"job\": \"" + lastname + "\" }";
+
+            String requestBody = "{ \"name\": \"" + name + "\", \"Lastname\": \"" + lastname + "\" }";
 
             // Send the POST request to create a user
-            Response response = RestAssured.given()
+            Response response = given()
                     .header("Content-Type", "application/json")
                     .body(requestBody)
-                    .post("/users");
+                    .post("/users/1");
 
             // Verify that the response code is 201 (Created)
             Assert.assertEquals(response.getStatusCode(), 201);
@@ -34,20 +34,18 @@ public class TC3_updateUser {
         }
     }
 
-    @Test(priority = 2, dependsOnMethods = {"testCreateUser"})
-    public void testUpdateUser() {
+    @Test(priority = 2, dependsOnMethods = {"testCreateUser"}, dataProvider = "DataForPut" )
+    public void testUpdateUser(String name,  String lastname) {
         try {
             // Retrieve the user ID from the response
-            Response response = RestAssured.get("/users");
+            Response response = get("/users");
             String userId = response.jsonPath().getString("data[0].id");
 
             // Set the request body parameters for the PUT request
-            String name = "John";
-            String lastname = "Hayden";
             String requestBody = "{ \"name\": \"" + name + "\", \"lastname\": \"" + lastname + "\" }";
 
             // Send the PUT request to update the user details
-            Response putResponse = RestAssured.given()
+            Response putResponse = given()
                     .header("Content-Type", "application/json")
                     .body(requestBody)
                     .put("/users/" + userId);
@@ -56,7 +54,7 @@ public class TC3_updateUser {
             Assert.assertEquals(putResponse.getStatusCode(), 200);
 
             // Verify that the user details have been updated
-            Response getUserResponse = RestAssured.get("/users/" + userId);
+            Response getUserResponse = get("/users/" + userId);
             String actualUserName = getUserResponse.jsonPath().getString("data.first_name");
             String actuallastname = getUserResponse.jsonPath().getString("data.last_name");
 

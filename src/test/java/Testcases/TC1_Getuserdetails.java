@@ -22,14 +22,23 @@ public class TC1_Getuserdetails {
                     .then()
                      .statusCode(200)
                      .extract().response();
+             System.out.println("Status Code:"+response.getStatusCode());
             System.out.println("Response body: " + response.getBody().asString());
             // Assert Response code is 200 , validated the user Info:
-            int actualStatusCode = response.getStatusCode();
-            int expectedStatusCode = 200;
-            Assert.assertEquals(actualStatusCode, expectedStatusCode);
+//            int actualStatusCode = response.getStatusCode();
+//            int expectedStatusCode = 200;
+                if(response != null) {
+                    int actualStatusCode = response.getStatusCode();
+                    int expectedStatusCode = 200;
+                    Assert.assertEquals(actualStatusCode, expectedStatusCode);
+                }
+                else {
+                    System.out.println("Response object is null");
+                }
+
 
             // Validate user details in response body
-            String ExpectedFirst_Name = "George";
+            String ExpectedFirst_Name = "cerulean";
             String actualFirst_Name = response.jsonPath().getString("first_name");
             Assert.assertEquals(actualFirst_Name, ExpectedFirst_Name );
             System.out.println("User details has been verified and passed");
@@ -51,7 +60,7 @@ public class TC1_Getuserdetails {
                 .body("data.email", hasItems("george.bluth@reqres.in", "janet.weaver@reqres.in", "emma.wong@reqres.in", "eve.holt@reqres.in", "charles.morris@reqres.in", "tracey.ramos@reqres.in"));
     }
 
-        @Test
+        @Test(priority = 3)
         public void getUserDetailsById() {
             int userId = 1;
             given()
