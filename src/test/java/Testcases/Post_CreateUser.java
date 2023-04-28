@@ -2,30 +2,35 @@ package Testcases;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.apache.http.impl.conn.SystemDefaultRoutePlanner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
+
 
 import static io.restassured.RestAssured.given;
 
 import io.restassured.RestAssured;
 
-public class Post_CreateUser {
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 
-    @Test(priority = 1)
-    public void testCreateUser() {
+public class Post_CreateUser extends datafortests {
+
+    @Test(priority = 1, dataProvider = "DataForPost")
+    public void testCreateUser(String Firstname, String lastname) {
         // Set the base URI for the API
         RestAssured.baseURI = "https://reqres.in/api";
 
         // Set the request body parameters
-        String Firstname = "George";
-        String lastname = "Clerk";
-        String requestBody = "{ \"name\": \"" + Firstname + "\", \"job\": \"" + lastname + "\" }";
+             String requestBody = "{ \"name\": \"" + Firstname + "\", \"lastname\": \"" + lastname + "\" }";
 
         // Send the POST request to create a user
         Response response = RestAssured.given()
                 .header("Content-Type", "application/json")
                 .body(requestBody)
                 .post("/users");
+        System.out.println("Status Code :"+response.getStatusCode());
+        System.out.println("time taken:"+ response.getTime());
 
         // Verify that the response code is 201 (Created)
         Assert.assertEquals(response.getStatusCode(), 201);
