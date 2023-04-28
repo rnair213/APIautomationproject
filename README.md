@@ -1,6 +1,6 @@
 # APIAutomationProject
 RestAssured API Test (TestNG Framework)
-This project is Automating the API using rest assured library using TestNG Framework
+This project is regarding Automating the API's https://reqres.in using rest assured library using TestNG Framework
 
 Reqres.in API Testing
 This project is designed to test the various methods available in the Reqres.in API, including GET, POST, and PUT requests. The approach taken for testing each of these methods is outlined below.
