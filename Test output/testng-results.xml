@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-04-28T12:14:16 IST" name="Default Suite" finished-at="2023-04-28T12:14:23 IST" duration-ms="6358">
+    <groups>
+    </groups>
+    <test started-at="2023-04-28T12:14:16 IST" name="APIautomationproject" finished-at="2023-04-28T12:14:23 IST" duration-ms="6358">
+      <class name="Testcases.Post_CreateUser">
+        <test-method signature="testCreateUser(java.lang.String,java.lang.String)[pri:1, instance:Testcases.Post_CreateUser@5c1a8622]" started-at="2023-04-28T12:14:16 IST" name="testCreateUser" data-provider="DataForPost" finished-at="2023-04-28T12:14:20 IST" duration-ms="4005" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Benny]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Bell]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateUser -->
+        <test-method signature="testCreateUser(java.lang.String,java.lang.String)[pri:1, instance:Testcases.Post_CreateUser@5c1a8622]" started-at="2023-04-28T12:14:20 IST" name="testCreateUser" data-provider="DataForPost" finished-at="2023-04-28T12:14:21 IST" duration-ms="458" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[jerry]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[june]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateUser -->
+        <test-method signature="testVerifyUserDetails()[pri:2, instance:Testcases.Post_CreateUser@5c1a8622]" started-at="2023-04-28T12:14:21 IST" name="testVerifyUserDetails" finished-at="2023-04-28T12:14:23 IST" depends-on-methods="Testcases.Post_CreateUser.testCreateUser" duration-ms="1788" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testVerifyUserDetails -->
+      </class> <!-- Testcases.Post_CreateUser -->
+    </test> <!-- APIautomationproject -->
+  </suite> <!-- Default Suite -->
+</testng-results>
