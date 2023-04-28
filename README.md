@@ -1,4 +1,4 @@
-# APIAutomationproject
+# APIAutomationProject
 RestAssured API Test (TestNG Framework)
 This project is Automating the API using rest assured library using TestNG Framework
 
